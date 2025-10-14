@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "RecipeVino",
+  "version": "1.0",
+  "description": "Get smart wine pairing suggestions based on any recipe page.",
+  "permissions": [
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/recipevino.png",
+      "32": "icons/recipevino.png",
+      "48": "icons/recipevino.png",
+      "128": "icons/recipevino.png"
+    }
+  },
+  "icons": {
+    "16": "icons/recipevino.png",
+    "32": "icons/recipevino.png",
+    "48": "icons/recipevino.png",
+    "128": "icons/recipevino.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

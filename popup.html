@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>RecipeVino</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital@1&family=Playfair+Display:wght@700&family=Quicksand:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <main id="popup" class="initial">
+
+        <div class="state" id="initial-state">
+            <div class="header">
+                <img src="icons/recipevinologo.png" alt="RecipeVino Logo" class="logo"/>
+                <p id="tagline" class="tagline">The perfect pour for every plate.</p>
+            </div>
+            <button id="findPairingBtn" class="cta-button">Scan Recipe</button>
+        </div>
+
+        <div class="state" id="loading-state">
+            <div class="wine-spinner">🍷</div>
+            <p>Finding the perfect pairing...</p>
+        </div>
+
+        <div class="state" id="success-state">
+            <div class="content-card sommelier-note">
+                <h4 id="sommelier-title">A Note From Your Sommelier</h4>
+                <p id="wine-suggestion">Chianti Classico</p>
+                <p id="wine-description">"This Italian red has the bright acidity and savory tannins to beautifully complement the rich, tomato-based flavors of the pork ragu."</p>
+            </div>
+            <div class="content-card">
+                <h5>Scanned Ingredients:</h5>
+                <ul id="ingredient-list"></ul>
+            </div>
+            <button id="rescanBtn">Scan Again</button>
+        </div>
+
+        <div class="state" id="error-state">
+            <img src="icons/recipevinologo.png" alt="RecipeVino Logo" class="logo-small"/>
+            <h3>Scan Failed</h3>
+            <p>Could not find a valid recipe on this page.</p>
+            <button id="tryAgainBtn">Try Again</button>
+        </div>
+
+    </main>
+    <script src="popup.js"></script>
+</body>
+</html>
