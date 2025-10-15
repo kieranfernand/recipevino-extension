@@ -8,10 +8,6 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
         "128": "icons/recipevino.png"
       },
       tabId
-    }, () => {
-      if (chrome.runtime.lastError) {
-        console.warn("Failed to reset icon:", chrome.runtime.lastError.message);
-      }
     });
   }
 });

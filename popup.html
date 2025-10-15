@@ -9,16 +9,42 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <main id="popup" class="initial">
+    <main id="popup" class="loading-initial">
+
+        <div class="state" id="age-gate-state">
+            <div class="header">
+                <img src="icons/recipevinologo.png" alt="RecipeVino Logo" class="logo"/>
+                <h4>Welcome to RecipeVino!</h4>
+            </div>
+            <div class="dob-container">
+                <input type="text" id="dob-day" placeholder="DD" maxlength="2" inputmode="numeric">
+                <input type="text" id="dob-month" placeholder="MM" maxlength="2" inputmode="numeric">
+                <input type="text" id="dob-year" placeholder="YYYY" maxlength="4" inputmode="numeric">
+            </div>
+            <p id="age-gate-error" class="error-message"></p>
+            <div class="legal-checkbox">
+                <input type="checkbox" id="legal-agree">
+                <label for="legal-agree">By continuing, I confirm I am of legal drinking age and agree to the <a href="#" target="_blank">Terms of Service</a> and <a href="#" target="_blank">Privacy Policy</a>.</label>
+            </div>
+            <button id="continue-btn" disabled>Continue</button>
+        </div>
+
+        <div class="state" id="welcome-state">
+            <img src="icons/recipevinologo.png" alt="RecipeVino Logo" class="logo-small"/>
+            <h3>Your Tasting Awaits!</h3>
+            <p>You have 3 free scans to discover the perfect wine pairing. Let's find your first match!</p>
+            <button id="start-pairing-btn" class="cta-button">Find a Pairing</button>
+        </div>
 
         <div class="state" id="initial-state">
             <div class="header">
                 <img src="icons/recipevinologo.png" alt="RecipeVino Logo" class="logo"/>
-                <p id="tagline" class="tagline">The perfect pour for every plate.</p>
+                <p id="tagline" class="tagline"></p>
+                <div class="scan-counter" id="scan-counter-display"></div>
             </div>
             <button id="findPairingBtn" class="cta-button">Scan Recipe</button>
         </div>
-
+        
         <div class="state" id="loading-state">
             <div class="wine-spinner">🍷</div>
             <p>Finding the perfect pairing...</p>
@@ -26,9 +52,9 @@
 
         <div class="state" id="success-state">
             <div class="content-card sommelier-note">
-                <h4 id="sommelier-title">A Note From Your Sommelier</h4>
-                <p id="wine-suggestion">Chianti Classico</p>
-                <p id="wine-description">"This Italian red has the bright acidity and savory tannins to beautifully complement the rich, tomato-based flavors of the pork ragu."</p>
+                <h4 id="sommelier-title"></h4>
+                <p id="wine-suggestion"></p>
+                <p id="wine-description"></p>
             </div>
             <div class="content-card">
                 <h5>Scanned Ingredients:</h5>
@@ -40,8 +66,26 @@
         <div class="state" id="error-state">
             <img src="icons/recipevinologo.png" alt="RecipeVino Logo" class="logo-small"/>
             <h3>Scan Failed</h3>
-            <p>Could not find a valid recipe on this page.</p>
+            <p id="error-message-text">Could not find a valid recipe on this page.</p>
             <button id="tryAgainBtn">Try Again</button>
+        </div>
+        
+        <div class="state" id="subscribe-state">
+            <img src="icons/recipevinologo.png" alt="RecipeVino Logo" class="logo-small"/>
+            <h3>You've Used Your Free Scans!</h3>
+            <p>Subscribe now for unlimited pairings.</p>
+            <div class="subscription-options">
+                <div class="option">
+                    <span class="plan-name">Monthly</span>
+                    <span class="plan-price">$0.99 / month</span>
+                </div>
+                <div class="option highlighted">
+                    <span class="best-value-banner">Best Value!</span>
+                    <span class="plan-name">Annual</span>
+                    <span class="plan-price">$9.99 / year</span>
+                </div>
+            </div>
+            <button id="subscribe-btn" class="cta-button">Subscribe Now</button>
         </div>
 
     </main>

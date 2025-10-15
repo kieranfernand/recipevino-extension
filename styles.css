@@ -6,119 +6,53 @@
   --card-bg: #ffffff;
   --border-color: #e6d3ce;
 }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.2); } 100% { transform: scale(1); } }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+body { width: 320px; margin: 0; font-family: 'Quicksand', sans-serif; background-color: var(--light-bg); color: var(--muted-text); }
+#popup { padding: 24px; text-align: center; }
 
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.2); }
-  100% { transform: scale(1); }
-}
-
-body {
-  width: 320px;
-  margin: 0;
-  font-family: 'Quicksand', sans-serif;
-  background-color: var(--light-bg);
-  color: var(--muted-text);
-}
-
-#popup {
-  padding: 24px;
-  text-align: center;
-}
-
-/* State Management */
 .state { display: none; }
-#popup.initial #initial-state,
-#popup.loading #loading-state,
-#popup.success #success-state,
-#popup.error #error-state {
-  display: block;
-  animation: fadeIn 0.5s ease-out;
-}
+#popup.age-gate-state #age-gate-state,
+#popup.welcome-state #welcome-state,
+#popup.initial-state #initial-state,
+#popup.loading-state #loading-state,
+#popup.success-state #success-state,
+#popup.error-state #error-state,
+#popup.subscribe-state #subscribe-state { display: block; animation: fadeIn 0.3s ease-out; }
 
-/* Header & Logo */
 .header { margin-bottom: 24px; }
 .logo { width: 150px; margin-bottom: 8px; }
 .logo-small { width: 80px; margin-bottom: 16px; }
 .tagline { font-size: 14px; color: var(--wine-red); font-style: italic; margin: 0; }
-
-/* Buttons */
-button {
-  font-family: 'Quicksand', sans-serif;
-  font-weight: 500;
-  background-color: var(--wine-red);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 10px 18px;
-  font-size: 15px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-button:hover {
-  background-color: var(--burgundy);
-  transform: translateY(-2px);
-}
+button { font-family: 'Quicksand', sans-serif; font-weight: 500; background-color: var(--wine-red); color: white; border: none; border-radius: 12px; padding: 10px 18px; font-size: 15px; cursor: pointer; transition: all 0.2s ease; }
+button:hover { background-color: var(--burgundy); }
+button:disabled { background-color: #ccc; cursor: not-allowed; }
 .cta-button { padding: 14px 28px; font-size: 18px; width: 100%; }
 
-/* Loading State */
+.dob-container { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+.dob-container input { width: 60px; padding: 12px; font-size: 16px; text-align: center; border: 1px solid var(--border-color); border-radius: 8px; }
+.legal-checkbox { text-align: left; font-size: 12px; margin: 20px 0; }
+.legal-checkbox a { color: var(--wine-red); text-decoration: none; }
+.error-message { color: #d93025; font-size: 12px; height: 16px; }
+
+#welcome-state h3, #subscribe-state h3, #age-gate-state h4, #error-state h3 { font-family: 'Playfair Display', serif; color: var(--burgundy); }
+.subscription-options { margin: 24px 0; }
+.option { border: 1px solid var(--border-color); border-radius: 12px; padding: 16px; margin-bottom: 12px; text-align: left; position: relative; }
+.option.highlighted { border-color: var(--wine-red); border-width: 2px; }
+.plan-name { font-weight: 500; color: var(--burgundy); }
+.plan-price { float: right; }
+.best-value-banner { background: var(--wine-red); color: white; font-size: 10px; padding: 2px 8px; border-radius: 8px; position: absolute; top: -10px; right: 16px; }
+.scan-counter { font-size: 12px; color: var(--muted-text); background: #fdf5f0; padding: 4px 10px; border-radius: 8px; display: inline-block; margin-top: 8px; }
+
 .wine-spinner { font-size: 40px; display: block; margin: 20px auto; animation: pulse 1.5s ease-in-out infinite; }
-
-/* Reusable Content Card */
-.content-card {
-  background: var(--card-bg);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 16px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
-  border: 1px solid var(--border-color);
-  text-align: left;
-}
-.state > .content-card:last-of-type {
-    margin-bottom: 24px;
-}
-
-/* Sommelier Note Styling */
-.sommelier-note {
-  text-align: center;
-}
-.sommelier-note h4 {
-  text-align: center;
-  margin: 0 0 12px;
-  font-weight: 500;
-  font-size: 14px;
-  color: var(--muted-text);
-}
-#wine-suggestion {
-  font-family: 'Playfair Display', serif;
-  font-size: 26px;
-  font-weight: 700;
-  color: var(--burgundy);
-  margin: 0 0 12px 0;
-  line-height: 1.2;
-}
-#wine-description {
-  font-family: 'Merriweather', serif; /* New, legible font */
-  font-style: italic; /* Style as a quote */
-  font-size: 15px;
-  line-height: 1.6;
-  color: var(--muted-text);
-  margin: 0;
-  padding-top: 10px;
-  border-top: 1px solid var(--border-color); /* Separator line */
-}
-
-/* Ingredient List Styling */
-.content-card h5 { margin: 0 0 8px; font-weight: 500; font-size: 14px; color: var(--muted-text); }
+.content-card { background: var(--card-bg); border-radius: 16px; padding: 20px; margin-bottom: 16px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); border: 1px solid var(--border-color); text-align: left; }
+.state > .content-card:last-of-type { margin-bottom: 24px; }
+.sommelier-note { text-align: center; }
+.sommelier-note h4 { text-align: center; margin: 0 0 12px; font-weight: 500; font-size: 14px; color: var(--muted-text); }
+#wine-suggestion { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: var(--burgundy); margin: 0 0 12px 0; }
+#wine-description { font-family: 'Merriweather', serif; font-style: italic; font-size: 15px; line-height: 1.6; color: var(--muted-text); margin: 0; padding-top: 10px; border-top: 1px solid var(--border-color); }
 #ingredient-list { list-style: none; padding: 0; margin: 0; max-height: 140px; overflow-y: auto; font-size: 14px; }
 #ingredient-list li { padding-left: 18px; position: relative; margin-bottom: 8px; }
 #ingredient-list li:last-child { margin-bottom: 0; }
 #ingredient-list li::before { content: '•'; color: var(--wine-red); font-size: 18px; position: absolute; left: 0; top: -2px; }
-
-/* Error State */
-#error-state h3 { font-family: 'Playfair Display', serif; color: var(--burgundy); margin: 0 0 8px; }
